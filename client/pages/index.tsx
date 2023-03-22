@@ -6,9 +6,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 const cookies = new Cookies();
 const baseUrl =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000/'
-    : process.env.NEXT_PUBLIC_API_URL;
+  process.env.NODE_ENV === 'development' ? 'http://localhost:3000/' : '';
 console.log(baseUrl);
 interface FormValue {
   id: string;

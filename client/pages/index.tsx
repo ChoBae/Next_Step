@@ -5,10 +5,10 @@ import { Cookies } from 'react-cookie';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 const cookies = new Cookies();
-const baseUrl = process.env.NEXT_PUBLIC_API_URL?.includes('localhost')
-  ? process.env.NEXT_PUBLIC_API_URL
-  : 'http://localhost:3000';
-
+const baseUrl =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000/'
+    : process.env.NEXT_PUBLIC_API_URL;
 interface FormValue {
   id: string;
   password: string;

@@ -5,6 +5,9 @@ import { Cookies } from 'react-cookie';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 const cookies = new Cookies();
+const baseUrl = process.env.NEXT_PUBLIC_API_URL?.includes('localhost')
+  ? process.env.NEXT_PUBLIC_API_URL
+  : 'http://localhost:3000';
 
 interface FormValue {
   id: string;
@@ -29,7 +32,7 @@ const Home: NextPage = () => {
       password: inputPassword,
     };
     axios
-      .post('http://localhost:3000/api/login', loginData)
+      .post(`${baseUrl}/api/login`, loginData)
       .then((res) => {
         if (res.data.success) {
           const { accessToken } = res.data;

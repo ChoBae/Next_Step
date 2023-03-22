@@ -9,6 +9,7 @@ const baseUrl =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000/'
     : process.env.NEXT_PUBLIC_API_URL;
+console.log(baseUrl);
 interface FormValue {
   id: string;
   password: string;

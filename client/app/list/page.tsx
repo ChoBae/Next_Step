@@ -14,6 +14,7 @@ export default async function List() {
             className="list-item"
             title={item.title}
             content={item.content}
+            id={item._id.toString()}
           ></CardItem>
         );
       })}

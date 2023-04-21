@@ -9,12 +9,13 @@ interface CardItemProps {
 
 const CardItem = (props: CardItemProps) => {
   return (
-    <Link href={`/detail/${props.id}`}>
-      <div className={props.className}>
+    <div className={props.className}>
+      <Link href={`/detail/${props.id}`}>
         <h4>{props.title}</h4>
-        <p>{props.content}</p>
-      </div>
-    </Link>
+      </Link>
+      <p>{props.content}</p>
+      <Link href={`/edit/${props.id}`}>✏️ 글 수정</Link>
+    </div>
   );
 };
 export default CardItem;

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { clientPromise } from "@/util/database";
+import { clientDB } from "@/util/database";
 import { ObjectId } from "mongodb";
 
 export default async function handler(
@@ -11,7 +11,7 @@ export default async function handler(
       return res.status(400).json({ message: "Invalid input" });
     }
     try {
-      const db = (await clientPromise).db("forum");
+      const db = (await clientDB).db("forum");
       const result = await db.collection("post").updateOne(
         { _id: new ObjectId(req.body.id) },
         {

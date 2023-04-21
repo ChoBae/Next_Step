@@ -1,6 +1,6 @@
 // import Image from "next/image";
 // import styles from "./page.module.css";
-import { clientPromise } from "../util/database";
+import { clientDB } from "../util/database";
 export default async function Home() {
   return (
     <div>

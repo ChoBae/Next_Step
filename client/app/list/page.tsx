@@ -1,23 +1,13 @@
-import { clientPromise } from "@/util/database";
-import CardItem from "./components/CardItem";
+import { clientDB } from "@/util/database";
+import ListItem from "./components/ListItem";
 export default async function List() {
-  let client = await clientPromise;
+  let client = await clientDB;
   let db = client.db("forum");
   let result = await db.collection("post").find().toArray();
-  console.log(result);
+  // console.log(result);
   return (
     <div className="list-bg">
-      {result.map((item, index) => {
-        return (
-          <CardItem
-            key={index}
-            className="list-item"
-            title={item.title}
-            content={item.content}
-            id={item._id.toString()}
-          ></CardItem>
-        );
-      })}
+      <ListItem result={result}></ListItem>
     </div>
   );
 }

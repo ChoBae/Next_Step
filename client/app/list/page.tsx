@@ -1,7 +1,7 @@
-import { clientPromise } from "@/util/database";
+import { clientDB } from "@/util/database";
 import ListItem from "./components/ListItem";
 export default async function List() {
-  let client = await clientPromise;
+  let client = await clientDB;
   let db = client.db("forum");
   let result = await db.collection("post").find().toArray();
   // console.log(result);

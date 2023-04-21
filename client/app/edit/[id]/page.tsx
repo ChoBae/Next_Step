@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { clientPromise } from "@/util/database";
+import { clientDB } from "@/util/database";
 
 interface EditProps {
   params: {
@@ -8,7 +8,7 @@ interface EditProps {
 }
 
 export default async function Edit(props: EditProps) {
-  let client = await clientPromise;
+  let client = await clientDB;
   let db = client.db("forum");
   let result = await db
     .collection("post")

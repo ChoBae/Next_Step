@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { clientPromise } from "@/util/database";
+import { clientDB } from "@/util/database";
 
 interface DetailProps {
     params: {
@@ -8,7 +8,7 @@ interface DetailProps {
 }
 
 export default async function Detail(props: DetailProps) {
-  let client = await clientPromise;
+  let client = await clientDB;
   let db = client.db("forum");
   let result = await db.collection("post").findOne({ _id: new ObjectId(props.params.id) });
   return (

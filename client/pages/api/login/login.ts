@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { clientPromise } from "@/util/database";
+import { clientDB } from "@/util/database";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -9,7 +9,7 @@ export default async function handler(
       return res.status(400).json({ message: "Invalid input" });
     }
     try {
-      const db = (await clientPromise).db("forum");
+      const db = (await clientDB).db("forum");
       const userCollection = db.collection("user");
       const check = await userCollection.findOne({ id: req.body.id });
       if (check) {

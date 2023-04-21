@@ -1,7 +1,7 @@
 export default async function Write() {
 
   return (
-    <div>
+    <div className="p-20">
       <h4>글 작성</h4>
       <form action="/api/post/new" method="POST">
         <input type="text" name="title" placeholder="제목" />

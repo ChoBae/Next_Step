@@ -6,6 +6,7 @@ interface CardItemProps {
   className: string;
   title: string;
   content: string;
+  author: string;
 }
 
 const CardItem = (props: CardItemProps) => {
@@ -15,6 +16,7 @@ const CardItem = (props: CardItemProps) => {
         <h4>{props.title}</h4>
       </Link>
       <p>{props.content}</p>
+      <p>{props.author}</p>
       <Link href={`/edit/${props.id}`}>✏️ 글 수정</Link>
       <span
         onClick={(e: any) => {
@@ -25,29 +27,24 @@ const CardItem = (props: CardItemProps) => {
             },
             body: JSON.stringify({
               id: props.id,
+              author: props.author,
             }),
           })
-            .then((r) => {
-              r.json();
+            .then((res) => {
+              console.log(res);
+              if (!res.ok) throw Error("글 삭제 중 오류가 발생했습니다.");
+              return res.json();
             })
             .then(() => {
               e.target.parentElement.style.opacity = "0";
               setTimeout(() => {
                 e.target.parentElement.style.display = "none";
               }, 1000);
+            })
+            .catch((error) => {
+              console.error(error);
+              alert("글 삭제 중 오류가 발생했습니다.");
             });
-          // fetch(`/api/post/delete?id=${props.id}`, {
-          //   method: "GET",
-          // })
-          //   .then((r) => {
-          //     r.json();
-          //   })
-          //   .then(() => {
-          //     e.target.parentElement.style.opacity = "0";
-          //     setTimeout(() => {
-          //       e.target.parentElement.style.display = "none";
-          //     }, 1000);
-          //   });
         }}
       >
         🗑️ 글 삭제

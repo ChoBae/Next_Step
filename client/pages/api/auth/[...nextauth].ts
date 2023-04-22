@@ -70,6 +70,7 @@ export const authOptions = {
         token.user = {};
         token.user.name = user.name;
         token.user.email = user.email;
+        token.user.role = user.role;
       }
       return token as any;
     },
@@ -79,7 +80,7 @@ export const authOptions = {
       return session as any;
     },
   },
-  secret: "qwer1234",
+  secret: process.env.NEXTAUTH_SECRET as string,
   adapter: MongoDBAdapter(clientDB),
 };
 export default NextAuth(authOptions);

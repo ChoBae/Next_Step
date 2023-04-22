@@ -13,6 +13,7 @@ const ListItem = (props: ListItemProps) => {
           className="list-item"
           title={item.title}
           content={item.content}
+          author={item.author}
           id={item._id.toString()}
         ></CardItem>
       ))}

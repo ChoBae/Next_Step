@@ -79,7 +79,7 @@ export const authOptions = {
       return session as any;
     },
   },
-  secret: "qwer1234",
+  secret: process.env.NEXTAUTH_SECRET as string,
   adapter: MongoDBAdapter(clientDB),
 };
 export default NextAuth(authOptions);
